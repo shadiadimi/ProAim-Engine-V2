@@ -1,0 +1,28 @@
+name: pro_aim_engine
+description: The Ultimate Aim Assistant for 8 Ball Pool.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  ffi: ^2.1.0
+  path_provider: ^2.1.1
+  flutter_floating_window: ^0.0.1 # Placeholder for actual overlay plugin
+  camera: ^0.10.5+5
+  tflite_flutter: ^0.10.1
+  native_device_orientation: ^1.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.3
+
+flutter:
+  uses-material-design: true
+  # Future: Add custom icons and fonts
+  # assets:
+  #   - assets/models/ai_detector.tflite
