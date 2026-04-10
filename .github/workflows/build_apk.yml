@@ -3,41 +3,34 @@ name: Build Flutter APK
 on:
   push:
     branches: [ main ]
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  workflow_dispatch:
 
 jobs:
-  build:
+  build-apk:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
           distribution: 'temurin'
-          cache: gradle
+          java-version: '17'
 
-      - name: Set up Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.0'
-          channel: 'stable'
-          cache: true
+          flutter-version: '3.13.0' # اضبط حسب احتياجك
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Build APK (release)
+        run: flutter build apk --release --no-tree-shake-icons
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
+          name: pro_aim_engine_apk
           path: build/app/outputs/flutter-apk/app-release.apk
-          
